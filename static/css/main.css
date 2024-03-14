@@ -970,3 +970,17 @@ legend {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-nav > li {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.navbar-nav > li > a {
+  padding: 10px 10px;
+}
