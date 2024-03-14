@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+from dynaconf import Dynaconf
+
+settings = Dynaconf(
+    settings_file = ['settings.toml'])
 
 app = Flask(__name__)
 
