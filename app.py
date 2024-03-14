@@ -1,10 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, g
 from dynaconf import Dynaconf
+import pymysql
+import pymysql.cursors
 
 settings = Dynaconf(
     settings_file = ['settings.toml'])
 
 app = Flask(__name__)
+
+def connect_db():
+    return pymysql.connect(
+        host="10.100.33.60",
+        user = settings.db_user,
+        password=settings.db_password,
+        database= settings.db_name,
+        cursorclass=pymysql.cursors.DictCursor,
+        autocommit=True
+    )
+
 
 @app.route('/')
 def landing():
