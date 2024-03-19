@@ -21,7 +21,10 @@ def connect_db():
 
 @app.route('/')
 def landing():
+
+    
     return render_template('landing.html.jinja')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
