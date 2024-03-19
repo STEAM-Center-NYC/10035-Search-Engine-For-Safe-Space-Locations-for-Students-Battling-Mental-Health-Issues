@@ -21,9 +21,19 @@ def connect_db():
 
 @app.route('/')
 def landing():
-
-    
     return render_template('landing.html.jinja')
+
+
+@app.route('/locations')
+def locations():
+    connection = connect_db()
+    with connection.cursor() as cursor:
+        sql = "SELECT name, address FROM Locations"
+        cursor.execute(sql)
+        locations_data = cursor.fetchall()
+    connection.close()
+
+    return render_template('locations.html.jinja', locations=locations_data)
 
 
 if __name__ == '__main__':
