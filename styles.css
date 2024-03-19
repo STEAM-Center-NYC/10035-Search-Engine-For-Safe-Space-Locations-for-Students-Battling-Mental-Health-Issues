@@ -5,3 +5,12 @@ body{
     background-color: #A7D397;
     color: white;
 }
+button{
+    border: #A7D397;
+}
+#quest{
+    font-family: "Staatliches", sans-serif;
+    font-size: medium;
+    text-align: center;
+}
+
