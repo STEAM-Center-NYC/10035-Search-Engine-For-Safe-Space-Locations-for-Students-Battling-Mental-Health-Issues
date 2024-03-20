@@ -145,7 +145,10 @@
   height: 100%;
   width: 100%;
   background: linear-gradient(-135deg, #1ae100, #01731c);
+<<<<<<< HEAD
   
+=======
+>>>>>>> 80721ac (added more to the nav)
   /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
   /* clip-path: circle(25px at calc(0% + 45px) 45px); */
   clip-path: circle(25px at calc(100% - 45px) 45px);
