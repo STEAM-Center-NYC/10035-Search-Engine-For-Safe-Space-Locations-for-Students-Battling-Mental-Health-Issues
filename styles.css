@@ -13,4 +13,8 @@ button{
     font-size: medium;
     text-align: center;
 }
+#submit{
+    border-radius: 8px;
+    
+}
 
