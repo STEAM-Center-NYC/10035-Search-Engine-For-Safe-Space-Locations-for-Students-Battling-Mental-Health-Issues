@@ -36,5 +36,14 @@ def locations():
     return render_template('locations.html.jinja', locations=locations_data)
 
 
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html.jinja')
+
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback.html.jinja')
+
 if __name__ == '__main__':
     app.run(debug=True)
