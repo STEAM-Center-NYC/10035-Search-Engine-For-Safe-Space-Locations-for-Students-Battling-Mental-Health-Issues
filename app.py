@@ -45,6 +45,17 @@ def contact():
 def feedback():
     return render_template('feedback.html.jinja')
 
+@app.route('/aboutus')
+def aboutus():
+    return render_template('aboutus.html.jinja')
+
+
+
+@app.route('/questionnnaire')
+def questionnnaire():
+    return render_template('questionnnaire.html.jinja')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
