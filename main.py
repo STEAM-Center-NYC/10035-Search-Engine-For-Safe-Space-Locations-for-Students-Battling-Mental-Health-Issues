@@ -8,3 +8,7 @@ def aboutus():
 
 if __name__ == '__main__':
     app.run()
+
+@app.route('/questionnnaire')
+def questionnaire ():
+    return render_template('questionnarie.html.jinja', questions=questionnaire)
