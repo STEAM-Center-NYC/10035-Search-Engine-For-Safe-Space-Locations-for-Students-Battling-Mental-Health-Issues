@@ -55,6 +55,14 @@ def aboutus():
 def questionnnaire():
     return render_template('questionnnaire.html.jinja')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html.jinja')
+
+@app.route('/signin')
+def signin():
+    return render_template('signin.html.jinja')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
