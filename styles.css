@@ -17,9 +17,7 @@ button{
     border-radius: 8px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 #pro{
-    font-family: "Balsamiq Sans", sans-serif;
     background-image: none;
     background-color:#A7D397;
     color: black;
