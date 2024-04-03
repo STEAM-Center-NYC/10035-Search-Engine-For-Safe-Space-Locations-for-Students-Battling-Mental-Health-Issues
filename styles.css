@@ -2,7 +2,7 @@
 body{
     font-family: "Staatliches", sans-serif;
     font-size:x-large;
-   background-image: linear-gradient(180deg, #A7D397, #90D26D, #A4CE95);
+    background-image: linear-gradient(180deg, #A7D397, #90D26D, #A4CE95);
     color: white;
 }
 button{
@@ -15,54 +15,16 @@ button{
 }
 #submit{
     border-radius: 8px;
-    
 }
-#myInput {
-    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 30%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
-    border-radius: 10px;
-  }
 
-  #myUL {
-    /* Remove default list styling */
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-  
-  #myUL li a {
-    border: 1px solid #ddd; /* Add a border to all links */
-    margin-top: 5px; /* Prevent double borders */
-    background-color: #f6f6f6; /* Grey background color */
-    padding: 7px; /* Add some padding */
-    text-decoration: none; /* Remove default text underline */
-    font-size: 16px; /* Increase the font-size */
-    color: black; /* Add a black text color */
-    display: block; /* Make it into a block element to fill the whole list */
-    border-radius: 10px;
-  }
-  
-  #myUL li a:hover:not(.header) {
-    background-color:lightyellow; /* Add a hover effect to all links, except for headers */
-  }
-
-.rate{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+#pro{
+    font-family: "Balsamiq Sans", sans-serif;
+    background-image: none;
+    background-color:#A7D397;
+    color: black;
 }
-.rating-box{
-   position: relative;
-   background:#A7D397;
-   padding: 25px 50px 35px;
-   border-radius: 25px;
+
+#circle{
+    border-radius: 50%;
 }
