@@ -25,6 +25,24 @@
   <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
+
+<input type="checkbox" id="active">
+      <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
+      <div class="wrapper">
+       <ul>
+            <li><a href="/">Maps</a></li>
+            <li><a href="/locations">Locations</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/questionnnaire">Questionaire</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            {% if not current_user.is_authenticated %}
+            <hr>
+                <li><a href="/signin">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+            {% endif %}
+        </ul>
+      </div>
 <body>
   <input type="checkbox" id="active">
   <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
