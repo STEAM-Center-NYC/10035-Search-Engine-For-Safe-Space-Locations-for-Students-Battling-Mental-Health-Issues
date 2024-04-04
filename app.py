@@ -66,7 +66,7 @@ def landing():
 def locations():
     connection = connect_db()
     with connection.cursor() as cursor:
-        sql = "SELECT name, address FROM Locations"
+        sql = "SELECT name, address, description FROM Locations"
         cursor.execute(sql)
         locations_data = cursor.fetchall()
     connection.close()
