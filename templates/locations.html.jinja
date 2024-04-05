@@ -34,20 +34,15 @@
       </div>
 
     <h1>Locations</h1>
-    <ul>
+    <ol style="text-align: center;">
         {% for location in locations %}
-        <li>Name: {{ location.name }}, Address: {{ location.address }}</li>
+        <li>Name: {{ location.name }}
+        <br>
+        Address: {{ location.address }}</li>
         <li>Description: {{ location.description }}</li>
+        <hr width="500" style="margin:auto">
         {% endfor %}
-
-
-    <h2>Therapists: </h2>
-
-
-    <h2> Psychiatrist: </h2>
-
-
-    </ul>
+    </ol>
 </body>
 
 </html>
