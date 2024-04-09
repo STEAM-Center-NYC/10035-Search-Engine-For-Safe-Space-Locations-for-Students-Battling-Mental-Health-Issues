@@ -61,6 +61,12 @@ def load_user(user_id):
 def landing_page():
     return render_template('landing.html.jinja')
 
+@app.route('/maps')
+def maps_page():
+    cursor = get_db().cursor()
+    cursor.execute("SELECT * FROM `Locations`")
+    result = cursor.fetchall()
+    return render_template('maps.html.jinja', locations = result)
 
 @app.route('/locations')
 def locations_page():

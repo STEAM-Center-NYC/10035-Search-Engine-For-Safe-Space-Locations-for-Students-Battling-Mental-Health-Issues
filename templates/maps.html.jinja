@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="static/css/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script src="static/js/L.Control.Locate.min.js"></script>
+    <style>
+        body {
+            margin: 0
+        }
+
+        #map {
+            width: 100vw;
+            height: 75vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map">
+
+        <script>
+            var map = L.map('map').fitWorld();
+
+            map.fitBounds([
+                [40.727805, -74.0295408],
+                [40.6562833, -73.8604929]
+            ]);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            L.control.locate().addTo(map);
+        {%for location in locations%}
+            L.marker([{{ location['latitude'] }}, {{location['longitude' ]}} ])
+            .addTo(map)
+            .bindPopup("<b>{{ location['name'] }}</b>");
+        {%endfor%}
+
+        </script>
+    </div>
+</body>
+
+</html>
