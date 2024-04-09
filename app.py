@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, g
+from flask import Flask, render_template, request, redirect, g, flash
 from dynaconf import Dynaconf
 import pymysql
 import pymysql.cursors
 import flask_login
-from flask_login import UserMixin, login_user, logout_user, login_required
+from flask_login import UserMixin, login_user, logout_user, login_required, current_user
 
 settings = Dynaconf(settings_file=['settings.toml'])
 
@@ -58,12 +58,12 @@ def load_user(user_id):
 
 
 @app.route('/')
-def landing():
+def landing_page():
     return render_template('landing.html.jinja')
 
 
 @app.route('/locations')
-def locations():
+def locations_page():
     connection = connect_db()
     with connection.cursor() as cursor:
         sql = "SELECT name, address, description FROM Locations"
@@ -74,27 +74,27 @@ def locations():
 
 
 @app.route('/contact')
-def contact():
+def contact_page():
     return render_template('contact.html.jinja')
 
 
 @app.route('/feedback')
-def feedback():
+def feedback_page():
     return render_template('feedback.html.jinja')
 
 
 @app.route('/aboutus')
-def aboutus():
+def aboutus_page():
     return render_template('aboutus.html.jinja')
 
 
 @app.route('/questionnnaire')
-def questionnnaire():
+def questionnnaire_page():
     return render_template('questionnnaire.html.jinja')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
-def signup():
+def signup_page():
     if request.method == 'POST':
         email = request.form['email']
         username = request.form['username']
@@ -111,7 +111,7 @@ def signup():
 
 
 @app.route('/signin', methods=['GET', 'POST'])
-def signin():
+def signin_page():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -127,6 +127,31 @@ def signin():
             error = "Invalid username or password. Please try again."
             return render_template('signin.html.jinja', error=error)
     return render_template('signin.html.jinja')
+
+
+@app.route('/submit_review', methods=['POST'])
+@login_required  
+def submit_review():
+    if request.method == 'POST':
+        review_text = request.form['review']
+        rating = request.form.get('rating')  
+        if not rating:
+            flash('Please provide a rating.', 'error')
+            return redirect('/feedback')  
+
+        if current_user.is_authenticated:
+            user_id = current_user.id
+            connection = connect_db()
+            with connection.cursor() as cursor:
+                sql = "INSERT INTO `Reviews` (user_id, review_text, rating) VALUES (%s, %s, %s)"
+                cursor.execute(sql, (user_id, review_text, rating))
+            connection.close()
+
+            flash('Review submitted successfully.', 'success')
+            return redirect('/feedback')  
+        else:
+            flash('You need to log in to submit a review.', 'error')
+            return redirect('/signin')  
 
 
 if __name__ == '__main__':
