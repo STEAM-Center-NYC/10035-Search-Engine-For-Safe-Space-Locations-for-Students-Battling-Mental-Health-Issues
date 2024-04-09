@@ -17,8 +17,6 @@
   <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-
-
 <body>
 
 <input type="checkbox" id="active">
@@ -28,7 +26,7 @@
             <li><a href="/">Maps</a></li>
             <li><a href="/locations">Locations</a></li>
             <li><a href="/aboutus">About</a></li>
-            <li><a href="/questionnnaire">Questionaire</a></li>
+            <li><a href="/questionnnaire">Questionnaire</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/feedback">Feedback</a></li>
             {% if not current_user.is_authenticated %}
@@ -41,51 +39,38 @@
 
       <div class="content">
          <div class="title">
-           
          </div>
          <p>
-           
          </p>
 
          <p>
-         
          </p>
+
 <div class="container">
-        <h1>Safe Space Feedback</h1>
-        <div class="rating">
-            <span id="rating">0</span>/5
+    <form method="POST" action="/submit_review">
+        <div class="container">
+            <h1>Safe Space Feedback</h1>
+            <div class="rating">
+                <span id="rating">0</span>/5
+            </div>
+            <div class="stars" id="stars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <p>Share your review:</p>
+            <textarea name="review" id="review" placeholder="Write your review here"></textarea>
+            <input type="hidden" name="rating" id="rating_input">
+            <button type="submit">Submit</button>
+            <div class="reviews" id="reviews"></div>
         </div>
-        <div class="stars" id="stars">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-        </div>
-        <p>Share your review:</p>
-        <textarea id="review"
-                  placeholder="Write your review here">
-          </textarea>
-        <button id="submit">Submit</button>
-        <div class="reviews" id="reviews">
-        </div>
-    </div>
-    <script src="/static/js/script.js"></script>
+    </form>
+</div>
 
-
+<script src="/static/js/script.js"></script>
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
