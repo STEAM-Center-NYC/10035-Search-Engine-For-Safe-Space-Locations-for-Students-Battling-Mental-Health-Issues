@@ -820,7 +820,7 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: url("../images/Searchs_004.jpeg");
+  background: linear-gradient(109.6deg, rgb(9, 154, 151) 11.2%, rgb(21, 205, 168) 91.1%);
   background-size: cover;
   background-position: center center;
   padding: 15px;
