@@ -129,5 +129,14 @@ def signin():
     return render_template('signin.html.jinja')
 
 
+@app.route('/thankyou')
+def thankyou():
+    return render_template('Thankyou.html.jinja')
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
