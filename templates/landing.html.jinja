@@ -10,58 +10,81 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>/* Add this CSS to your existing CSS file or style tag */
+
+/* Center the buttons */
+.input-field {
+  text-align: center;
+}
+
+/* Style the buttons */
+.btn {
+  padding: 10px 20px; /* Increase padding for bigger buttons */
+  font-size: 16px; /* Increase font size for better readability */
+  margin: 10px; /* Add margin for better spacing */
+  border-radius: 8px; /* Add border radius for rounded corners */
+}
+
+/* Style the buttons on hover */
+.btn:hover {
+  background-color: #007bff; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+</style>
 </head>
 
 <body>
-   <input type="checkbox" id="active">
-      <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
-      <div class="wrapper">
-        <ul>
-            <li><a href="/">Maps</a></li>
-            <li><a href="/locations">Locations</a></li>
-            <li><a href="/aboutus">About</a></li>
-            <li><a href="/questionnnaire">Questionaire</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-            
-            {% if not current_user.is_authenticated %}
-            <hr>
-                <li><a href="/signin">Login</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-            {% endif %}
-        </ul>
-      </div>
+  <input type="checkbox" id="active">
+  <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
+  <div class="wrapper">
+    <ul>
+      <li><a href="/">Maps</a></li>
+      <li><a href="/locations">Locations</a></li>
+      <li><a href="/aboutus">About</a></li>
+      <li><a href="/questionnnaire">Questionaire</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+
+      {% if not current_user.is_authenticated %}
+      <hr>
+      <li><a href="/signin">Login</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+      {% endif %}
+    </ul>
+  </div>
   <div class="s004">
     <form>
       <fieldset>
-        <legend style="color: black;"> Your Location:</legend>
+        <legend style="color: black;"> Choose View:</legend>
         <div class="inner-form">
           <div class="input-field">
-            <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Where Are You????" />
-            <button class="btn-search" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
-                </path>
-              </svg>
-            </button>
+            <a class="btn btn-primary" href="/maps">Maps</a>
+            <a class="btn btn-primary" href="/locations">List</a>
           </div>
-        </div>
-        <div class="suggestion-wrap">
-          <!-- I will put the Saved locations here when they are able to be added-->
         </div>
       </fieldset>
     </form>
   </div>
-  <script src="/static/js/extention/choices.js"></script>
+  <div id="map" style="display: none;"> <!-- Initially hide the map -->
+    <!-- Embed the map here -->
+    <iframe src="/maps" width="100%" height="600px"></iframe>
+  </div>
+  <div id="list" style="display: none;"> <!-- Initially hide the list -->
+    <!-- Your list content here -->
+    <p>This is the list view.</p>
+  </div>
   <script>
-    var textPresetVal = new Choices('#choices-text-preset-values',
-      {
-        removeItemButton: true,
-      });
+    function showMaps() {
+      document.getElementById("map").style.display = "block";
+      document.getElementById("list").style.display = "none";
+    }
 
+    function showList() {
+      document.getElementById("map").style.display = "none";
+      document.getElementById("list").style.display = "block";
+    }
   </script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
