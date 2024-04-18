@@ -149,7 +149,7 @@
             [40.6562833, -73.8604929]
         ]);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://maps.circuitbreakers.tech/styles/basic-preview/512/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         L.control.locate().addTo(map);
@@ -176,11 +176,13 @@
 
         function setDestination(lat, lng) {
 
+            document.getElementById("loader").style.display = 'flex'
+
             map.locate({
                 setView: false,
                 maxZoom: 16,
                 watch: false,
-                enableHighAccuracy: truedocument.getElementById("loader").style.display = 'none';
+                enableHighAccuracy: true
             });
             
 
@@ -193,7 +195,7 @@
                     ],
                     routeWhileDragging: true
                 }).addTo(map);
-
+                document.getElementById("loader").style.display = 'none'
             });
         }
 
