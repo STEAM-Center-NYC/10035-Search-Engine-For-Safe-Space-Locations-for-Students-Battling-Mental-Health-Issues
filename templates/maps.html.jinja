@@ -175,7 +175,10 @@
                 .bindPopup('Your Location');
                 document.getElementById("loader").style.display = 'none';
         });
-        map.on('locationerror', console.log)
+        map.on('locationerror', function (e){
+            document.getElementById("loader").style.display = 'none';
+        });
+
 
 
         function setDestination(lat, lng) {
