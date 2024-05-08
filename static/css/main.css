@@ -14,6 +14,7 @@ html {
  */
 body {
   margin: 0;
+  background-color: #A7D397;
 }
 
 /**
@@ -819,7 +820,7 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: url("../images/Searchs_004.jpeg");
+  background: #A7D397;
   background-size: cover;
   background-position: center center;
   padding: 15px;
