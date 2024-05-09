@@ -54,17 +54,28 @@
                 <span id="rating">0</span>/5
             </div>
             <div class="stars" id="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
+                <input class="star" data-value="1" value="1" type="radio" name="rate">★
+                <input class="star" data-value="2" value="2" type="radio" name="rate">★
+                <input class="star" data-value="3" value="3" type="radio" name="rate">★
+                <input class="star" data-value="4" value="4" type="radio" name="rate">★
+                <input class="star" data-value="5" value="5" type="radio" name="rate">★
             </div>
             <p>Share your review:</p>
             <textarea name="review" id="review" placeholder="Write your review here"></textarea>
             <input type="hidden" name="rating" id="rating_input">
             <button type="submit">Submit</button>
             <div class="reviews" id="reviews"></div>
+            <br>
+            <br>
+            <ol>
+        {% for review in reviews %}
+            <li>
+                <strong>User ID:</strong> {{ review.user_id }}<br>
+                <strong>Review:</strong> {{ review.review_text }}<br>
+                <strong>Rating:</strong> {{ review.rating }}<br>
+            </li>
+        {% endfor %}
+    </ol>
         </div>
     </form>
 </div>
