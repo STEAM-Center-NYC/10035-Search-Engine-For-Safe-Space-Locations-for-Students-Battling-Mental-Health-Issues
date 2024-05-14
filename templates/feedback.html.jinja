@@ -68,14 +68,15 @@
             <br>
             <br>
             <ol>
-        {% for review in reviews %}
-            <li>
-                <strong>User ID:</strong> {{ review.user_id }}<br>
-                <strong>Review:</strong> {{ review.review_text }}<br>
-                <strong>Rating:</strong> {{ review.rating }}<br>
-            </li>
-        {% endfor %}
-    </ol>
+    {% for review in reviews %}
+    <li>
+        <strong>Username:</strong> {{ review.username }}<br>
+        <strong>Review:</strong> {{ review.review_text }}<br>
+        <strong>Rating:</strong> {{ review.rating }}<br>
+    </li>
+    {% endfor %}
+</ol>
+
         </div>
     </form>
 </div>

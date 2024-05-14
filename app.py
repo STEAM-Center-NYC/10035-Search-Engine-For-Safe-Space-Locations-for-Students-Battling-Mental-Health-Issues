@@ -89,7 +89,7 @@ def feedback_page():
     connection = connect_db()
     try:
         with connection.cursor() as cursor:
-            sql = "SELECT * FROM `Reviews`"
+            sql = "SELECT r.user_id, r.review_text, r.rating, u.username FROM `Reviews` r JOIN `Users` u ON r.user_id = u.id"
             cursor.execute(sql)
             reviews_data = cursor.fetchall()
     finally:
@@ -163,7 +163,6 @@ def submit_review():
             connection = connect_db()
             try:
                 with connection.cursor() as cursor:
-
                     sql = "INSERT INTO `Reviews` (user_id, review_text, rating) VALUES (%s, %s, %s)"
                     cursor.execute(sql, (user_id, review_text, rating))
                     print(sql)
