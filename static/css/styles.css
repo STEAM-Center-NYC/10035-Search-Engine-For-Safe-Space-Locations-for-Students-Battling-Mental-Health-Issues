@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.scrollable-form {
+  overflow-y: auto;
+  max-height: 80vh; 
+}
+
+
 body{
     font-family: "Staatliches", sans-serif;
     font-size:x-large;

@@ -3,25 +3,25 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewpoint" content="width=device-width, 
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, 
                    initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-      <title>Fullscreen Overlay Navigation | CodingNepal</title>
-   <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
-  <link href="/static/css/main.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Fullscreen Overlay Navigation | CodingNepal</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
 <body>
 
-<input type="checkbox" id="active">
-      <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
-      <div class="wrapper">
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fa-bars"></i></label>
+    <div class="wrapper">
         <ul>
             <li><a href="/">Maps</a></li>
             <li><a href="/locations">Locations</a></li>
@@ -31,45 +31,59 @@
             <li><a href="/feedback">Feedback</a></li>
             {% if not current_user.is_authenticated %}
             <hr>
-                <li><a href="/signin">Login</a></li>
-                <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/signin">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
             {% endif %}
         </ul>
-      </div>
+    </div>
 
-      <div class="content">
-         <div class="title">
-         </div>
-         <p>
-         </p>
-
-         <p>
-         </p>
-
-<div class="container">
-    <form method="POST" action="/submit_review">
-        <div class="container">
-            <h1>Safe Space Feedback</h1>
-            <div class="rating">
-                <span id="rating">0</span>/5
-            </div>
-            <div class="stars" id="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <p>Share your review:</p>
-            <textarea style="border-radius: 10px;" name="review" id="review" placeholder="Write your review here"></textarea>
-            <input type="hidden" name="rating" id="rating_input">
-            <button style="border-radius:8px;border-color:#65B741;color:white;background-color:#65B741" type="submit">Submit</button>
-            <div class="reviews" id="reviews"></div>
+    <div class="content">
+        <div class="title">
         </div>
-    </form>
-</div>
+        <p>
+        </p>
 
-<script src="/static/js/script.js"></script>
+        <p>
+        </p>
+
+        <div class="container" style="align-items: center;">
+            <form method="POST" action="/submit_review">
+                <div class="container">
+                    <h1>Safe Space Feedback</h1>
+                    <div class="rating">
+                        <span id="rating">0</span>/5
+                    </div>
+                    <div class="stars" id="stars">
+                        <input class="star" data-value="1" value="1" type="radio" name="rate">★
+                        <input class="star" data-value="2" value="2" type="radio" name="rate">★
+                        <input class="star" data-value="3" value="3" type="radio" name="rate">★
+                        <input class="star" data-value="4" value="4" type="radio" name="rate">★
+                        <input class="star" data-value="5" value="5" type="radio" name="rate">★
+                    </div>
+                    <p>Share your review:</p>
+                    <textarea name="review" id="review" placeholder="Write your review here"></textarea>
+                    <input type="hidden" name="rating" id="rating_input">
+                    <button type="submit">Submit</button>
+                    <div class="reviews" id="reviews"></div>
+                    <br>
+                    <br>
+                    <div style="overflow-y: scroll; max-height:50vh">
+                        <ol>
+                            {% for review in reviews %}
+                            <li>
+                                <strong>Username:</strong> {{ review.username }}<br>
+                                <strong>Review:</strong> {{ review.review_text }}<br>
+                                <strong>Rating:</strong> {{ review.rating }}<br>
+                                <br>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="/static/js/script.js"></script>
 
 </body>
 

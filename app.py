@@ -86,7 +86,18 @@ def contact_page():
 
 @app.route('/feedback')
 def feedback_page():
-    return render_template('feedback.html.jinja')
+    connection = connect_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT r.user_id, r.review_text, r.rating, u.username FROM `Reviews` r JOIN `Users` u ON r.user_id = u.id"
+            cursor.execute(sql)
+            reviews_data = cursor.fetchall()
+    finally:
+        connection.close()
+
+    return render_template('feedback.html.jinja', reviews=reviews_data)
+    
+
 
 
 @app.route('/aboutus')
@@ -140,24 +151,32 @@ def signin_page():
 def submit_review():
     if request.method == 'POST':
         review_text = request.form['review']
-        rating = request.form.get('rating')  
-        if not rating:
-            flash('Please provide a rating.', 'error')
-            return redirect('/feedback')  
+        rating = request.form.get('rate')  
+
+
+        if not review_text or not rating:
+            flash('Please provide both a review and a rating.', 'error')
+            return redirect('/feedback')
 
         if current_user.is_authenticated:
             user_id = current_user.id
             connection = connect_db()
-            with connection.cursor() as cursor:
-                sql = "INSERT INTO `Reviews` (user_id, review_text, rating) VALUES (%s, %s, %s)"
-                cursor.execute(sql, (user_id, review_text, rating))
-            connection.close()
-
-            flash('Review submitted successfully.', 'success')
-            return redirect('/feedback')  
+            try:
+                with connection.cursor() as cursor:
+                    sql = "INSERT INTO `Reviews` (user_id, review_text, rating) VALUES (%s, %s, %s)"
+                    cursor.execute(sql, (user_id, review_text, rating))
+                    print(sql)
+                connection.commit()  
+                flash('Review submitted successfully.', 'success')
+                return redirect('/feedback')  
+            except Exception as e:
+                flash(f'An error occurred: {str(e)}', 'error')
+                return redirect('/feedback')
+            finally:
+                connection.close()  
         else:
             flash('You need to log in to submit a review.', 'error')
-            return redirect('/signin')  
+            return redirect('/signin')
 
 
 
