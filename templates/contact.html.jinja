@@ -106,38 +106,38 @@
 
   <div style="text-align: center;">
     <div class="card">
-      <h2>Contact Us</h2>
+      <h2 style="text-decoration: underline;">Contact Us</h2>
       <div class="row">
         <form action="https://us-central1-steam-center-app-dev.cloudfunctions.net/formToEmail" method="post">
           <div class="col">
             <div class="form-group">
               <label>First Name</label>
-              <input type="text" name="first-name">
+              <input type="text">
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
               <label>Surname</label>
-              <input type="text" name="surname">
+              <input type="text">
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
               <label>Email</label>
-              <input type="email" name="email">
+              <input type="email">
             </div>
           </div>
 
           <div class="col-full">
             <div class="form-group">
               <label>Message</label>
-              <textarea name="message"></textarea>
+              <textarea></textarea>
             </div>
           </div>
 
-          <div class="col-full">
+          <div class="col">
             <input type="submit" value="Submit">
             <input name="send-to" value="cjohn@brooklynsteamcenter.org" hidden>
           </div>
